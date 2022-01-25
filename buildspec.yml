@@ -7,4 +7,3 @@ phases:
     build:
         commands:
             - dotnet build -c Release ./ViocareWebApp/ViocareWebApp.csproj
-
