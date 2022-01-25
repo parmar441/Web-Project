@@ -6,4 +6,4 @@ phases:
             dotnet: 3.1
     build:
         commands:
-            - dotnet build -c Release ./mEMDA-api-dotnet-core/mEMDA-api-dotnet-core/mEMDA-api-dotnet-core.csproj
+            - dotnet build -c Release ./ViocareWebApp/ViocareWebApp.csproj
