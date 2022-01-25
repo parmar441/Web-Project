@@ -1,0 +1,14 @@
+version: 0.2
+
+phases:
+
+  build:
+    commands:
+      - dotnet restore ViocareWebApp/ViocareWebApp.csproj
+      - dotnet build ViocareWebApp/ViocareWebApp.csproj
+      - dotnet publish ViocareWebApp/ViocareWebApp.csproj -o ./staging/app
+      - cp ./ViocareWebApp/aws-windows-deployment-manifest.json ./ViocareWebApp/staging/.
+artifacts:
+  files:
+    - '**/*'
+  base-directory: 'ViocareWebApp/staging'
