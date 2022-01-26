@@ -13,7 +13,14 @@ namespace ViocareWebApp
     {
         public static void Main(string[] args)
         {
+            //Read Configuration from appSettings
+            var builder = new ConfigurationBuilder()
+                    .AddJsonFile("appsettings.json", false, true)
+                    .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production"}.json", true)
+                    .Build();
+
             CreateHostBuilder(args).Build().Run();
+
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
