@@ -1,8 +1,8 @@
 branch-defaults:
   circleci-project-setup:
-    environment: ViocareWebApp
+    environment: ViocareWebApp-test
 global:
-  application_name: ViocareWebApp-test
+  application_name: ViocareWebApp
   default_ec2_keyname: e-deitkmkhm3
   default_platform: .NET Core running on 64bit Amazon Linux 2/2.2.9
   default_region: us-east-1
