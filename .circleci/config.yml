@@ -1,13 +1,14 @@
 version: 2.1
 
-orbs:
-  windows: circleci/windows@2.2.0
+orbs:  
+  build-tools: circleci/build-tools@x.y.z
 
 jobs:
   build:
     description: Build application with Release configuration
     executor:
-      name: windows/default
+      machine:
+        machine: true
     steps:
       - checkout
       - run: npm install
