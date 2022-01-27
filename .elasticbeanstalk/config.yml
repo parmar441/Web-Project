@@ -3,7 +3,7 @@ branch-defaults:
     environment: ViocareWebApp-test
 global:
   application_name: ViocareWebApp
-  default_ec2_keyname: e-deitkmkhm3
+  default_ec2_keyname: development-2021
   default_platform: .NET Core running on 64bit Amazon Linux 2/2.2.9
   default_region: us-east-1
   sc: git
