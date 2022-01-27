@@ -16,4 +16,9 @@ jobs:
 workflows:
   build-and-test:
     jobs:
-      - build
+      - deploy:
+          filters:
+            branches:
+              only:
+                - circleci-project-setup
+                - master
