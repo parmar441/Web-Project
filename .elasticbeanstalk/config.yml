@@ -1,5 +1,5 @@
 branch-defaults:
-  master:
+  circleci-project-setup:
     environment: ViocareWebApp
 global:
   application_name: ViocareWebApp-test
