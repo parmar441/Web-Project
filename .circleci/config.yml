@@ -14,9 +14,9 @@ jobs:
           name: "Deploying"
           command: eb deploy ViocareWebApp-test
 workflows:
-  build-and-test:
+  build:
     jobs:
-      - build-and-test:
+      - build:
           context: aws
           filters:
             branches:
