@@ -11,14 +11,14 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "Build Application according to some given configuration"
-          command: dotnet.exe build --configuration Release
+          name: "Deploying"
+          command: eb deploy ViocareWebApp-test
 workflows:
-   build:
+  build-and-test:
     jobs:
-      - deploy:
+      - build-and-test:
+          context: aws
           filters:
             branches:
               only:
                 - circleci-project-setup
-                - master
