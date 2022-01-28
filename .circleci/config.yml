@@ -5,7 +5,6 @@ jobs:
     description: Build application with Release configuration
     steps:
       - checkout
-      - run: npm install
       - run: sudo pip install awsebcli --upgrade
       - run: echo AKIAXNVGZ2DF5UGNQBVT
       - run:
