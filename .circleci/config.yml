@@ -11,6 +11,7 @@ jobs:
           name: install-awscli
           command: |
             sudo apt-get -y -qq update
+            pip install --upgrade setuptools
             sudo apt install python3-pip python3-dev
             sudo pip3 install awsebcli --upgrade
       - run: echo AKIAXNVGZ2DF5UGNQBVT
