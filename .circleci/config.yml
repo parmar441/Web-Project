@@ -11,17 +11,28 @@ jobs:
     steps:
       - checkout:
           path: C:\Users\circleci\project
+      - restore_cache:
+          keys:
+            - dotnet-packages-v1-{{ checksum "ViocareWebApp.csproj" }}
+      - run:
+          name: "Install project dependencies"
+          command: dotnet.exe restore
+      - save_cache:
+          paths:
+            - C:\Users\circleci\project\HelloWorld\.nuget\packages
+          key: dotnet-packages-v1-{{ checksum "ViocareWebApp.csproj" }}
+
       - run:
           name: "Install project dependencies"
           command: dotnet.exe restore
       - run:
           name: "Run Build step"
-          command: dotnet.exe publish -c Release
+          command: dotnet.exe publish -c Release -r win10-x64
       - run:
           name: "Test the executable"
-          command: .\bin\Release\netcoreapp3.1\ViocareWebApp.exe 
+          command: .\bin\Release\netcoreapp2.1\win10-x64\publish\ViocareWebApp.exe 
       - store_artifacts:
-          path: .\bin\Release\netcoreapp3.1\ViocareWebApp.exe
+          path: .\bin\Release\netcoreapp2.1\win10-x64\publish\ViocareWebApp.exe
           
 workflows:
   hello-world:
