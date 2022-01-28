@@ -1,40 +1,30 @@
 version: 2.1
 
-orbs:
-  win: circleci/windows@2.4.0
-
 jobs:
   build:
-    executor:
-      name: win/default
-    working_directory: C:\Users\circleci\project\ViocareWebApp\ViocareWebApp
+    description: Build application with Release configuration
+    machine: # executor type
+      image: ubuntu-2004:202111-02
     steps:
-      - checkout:
-          path: C:\Users\circleci\project\ViocareWebApp
-      - restore_cache:
-          keys:
-            - dotnet-packages-v1-{{ checksum "ViocareWebApp.csproj" }}
+      - checkout
       - run:
-          name: "Install project dependencies"
-          command: dotnet.exe restore
-      - save_cache:
-          paths:
-            - C:\Users\circleci\project\HelloWorld\.nuget\packages
-          key: dotnet-packages-v1-{{ checksum "ViocareWebApp.csproj" }}
-
+          name: install-awscli
+          command: |
+            sudo apt-get -y -qq update
+            pip install --upgrade setuptools
+            sudo apt install python3-pip python3-dev
+            sudo pip3 install awsebcli --upgrade
+            dotnet restore
+            dotnet publish -c Release -r linux-x64 -o ./build_output ./${PROJECT}/${PROJECT}.csproj --self-contained false
+      - run: echo AKIAXNVGZ2DF5UGNQBVT
       - run:
-          name: "Install project dependencies"
-          command: dotnet.exe restore
-      - run:
-          name: "Run Build step"
-          command: dotnet.exe publish -c Release -r win10-x64
-      - run:
-          name: "Test the executable"
-          command: .\bin\Release\netcoreapp2.1\win10-x64\publish\ViocareWebApp.exe 
-      - store_artifacts:
-          path: .\bin\Release\netcoreapp2.1\win10-x64\publish\ViocareWebApp.exe
-          
+          name: "Deploying"
+          command: eb deploy ViocareWebApp-test
 workflows:
-  hello-world:
+  build:
     jobs:
-      - build
+      - build:
+          filters:
+            branches:
+              only:
+                - circleci-project-setup
