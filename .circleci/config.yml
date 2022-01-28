@@ -3,11 +3,6 @@ version: 2.1
 orbs:
   win: circleci/windows@2.4.0
 
-workflows:
-  hello-world:
-    jobs:
-      - build
-
 jobs:
   build:
     executor:
@@ -28,3 +23,8 @@ jobs:
           command: .\bin\Release\netcoreapp3.1\win10-x64\publish\ViocareWebApp.exe 
       - store_artifacts:
           path: .\bin\Release\netcoreapp3.1\win10-x64\publish\ViocareWebApp.exe
+          
+workflows:
+  hello-world:
+    jobs:
+      - build
