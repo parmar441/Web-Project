@@ -14,10 +14,11 @@ jobs:
             pip install --upgrade setuptools
             sudo apt install python3-pip python3-dev
             sudo pip3 install awsebcli --upgrade
-            sudo apt-get update; \
-            sudo apt-get install -y apt-transport-https && \
-            sudo apt-get update && \
-            sudo apt-get install https://dotnet.microsoft.com/download/dotnet/scripts/v1/dotnet-install.sh
+            curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+            sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+            sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
+            sudo apt-get update
+            sudo apt-get install dotnet-sdk-2.1.4
             dotnet restore
             dotnet publish -c Release -r linux-x64 -o ./build_output ./${PROJECT}/${PROJECT}.csproj --self-contained false
       - run: echo AKIAXNVGZ2DF5UGNQBVT
