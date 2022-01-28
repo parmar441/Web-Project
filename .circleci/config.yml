@@ -7,7 +7,12 @@ jobs:
       image: ubuntu-1604:201903-01
     steps:
       - checkout
-      - run: sudo -H pip3 install awsebcli --upgrade
+       - run:
+          name: install-awscli
+          command: |
+            sudo apt-get -y -qq update
+            sudo apt install python3-pip python3-dev
+            sudo pip3 install awsebcli --upgrade
       - run: echo AKIAXNVGZ2DF5UGNQBVT
       - run:
           name: "Deploying"
