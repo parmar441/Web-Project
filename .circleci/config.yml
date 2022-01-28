@@ -14,7 +14,10 @@ jobs:
             pip install --upgrade setuptools
             sudo apt install python3-pip python3-dev
             sudo pip3 install awsebcli --upgrade
-            sudo apt-get install -y dotnet-runtime-6.0
+            sudo apt-get update; \
+            sudo apt-get install -y apt-transport-https && \
+            sudo apt-get update && \
+            sudo apt-get install -y dotnet-sdk-3.1
             dotnet restore
             dotnet publish -c Release -r linux-x64 -o ./build_output ./${PROJECT}/${PROJECT}.csproj --self-contained false
       - run: echo AKIAXNVGZ2DF5UGNQBVT
