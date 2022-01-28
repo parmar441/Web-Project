@@ -3,8 +3,6 @@ version: 2.1
 jobs:
   build:
     description: Build application with Release configuration
-    machine: # executor type
-      image: Linux 2/2.2.9
     steps:
       - checkout
       - run: npm install
