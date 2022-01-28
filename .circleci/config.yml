@@ -10,5 +10,7 @@ deployment:
       - eb use ViocareWebApp-test --viocare-VioscreenAPI default
       - eb deploy --viocare-VioscreenAPI default
 workflows:
+  build:
     deployment:
-       develop
+      - develop
+          
