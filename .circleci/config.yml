@@ -17,7 +17,7 @@ jobs:
             sudo apt-get update; \
             sudo apt-get install -y apt-transport-https && \
             sudo apt-get update && \
-            sudo apt-get install -y dotnet-sdk-3.1
+            sudo apt-get install https://dotnet.microsoft.com/download/dotnet/scripts/v1/dotnet-install.sh
             dotnet restore
             dotnet publish -c Release -r linux-x64 -o ./build_output ./${PROJECT}/${PROJECT}.csproj --self-contained false
       - run: echo AKIAXNVGZ2DF5UGNQBVT
