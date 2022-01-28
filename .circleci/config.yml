@@ -11,4 +11,5 @@ deployment:
       - eb deploy --viocare-VioscreenAPI default
 workflows:
   build:
-    deployment
+    deployment:
+       develop
