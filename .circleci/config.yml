@@ -11,9 +11,6 @@ jobs:
     steps:
       - checkout:
           path: C:\Users\circleci\project
-      - restore_cache:
-          keys:
-            - dotnet-packages-v1-{{ checksum "ViocareWebApp.csproj" }}
       - run:
           name: "Install project dependencies"
           command: dotnet.exe restore
