@@ -14,12 +14,12 @@ jobs:
           command: dotnet.exe restore
       - run:
           name: "Run Build step"
-          command: dotnet.exe publish -c Release -r win10-x64
+          command: dotnet.exe publish -c Debug -r win10-x64
       - run:
           name: "Test the executable"
-          command: .\bin\Release\netcoreapp3.1\win10-x64\publish\ViocareWebApp.exe 
+          command: .\bin\Debug\netcoreapp3.1\win10-x64\publish\ViocareWebApp.exe 
       - store_artifacts:
-          path: .\bin\Release\netcoreapp3.1\win10-x64\publish\ViocareWebApp.exe
+          path: .\bin\Debug\netcoreapp3.1\win10-x64\publish\ViocareWebApp.exe
           
 workflows:
   hello-world:
