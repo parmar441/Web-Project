@@ -19,7 +19,7 @@ jobs:
             sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
             sudo apt-get update
             sudo apt-get install dotnet-sdk-3.1
-            dotnet publish -c Release -r linux-x64 -o ./ViocareWebApp/ViocareWebApp/ViocareWebApp.csproj --self-contained false
+            dotnet publish -c Release -r linux-x64 -o ./build_output ./ViocareWebApp/ViocareWebApp/ViocareWebApp.csproj --self-contained false
       - run: echo AKIAXNVGZ2DF5UGNQBVT
       - run:
           name: "Deploying"
