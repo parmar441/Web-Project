@@ -7,8 +7,10 @@ jobs:
   build:
     executor:
       name: win/default
+    working_directory: C:\Users\circleci\project\ViocareWebApp
     steps:
-      - checkout
+      - checkout:
+          path: C:\Users\circleci\project
       - run:
           name: "Install project dependencies"
           command: dotnet.exe restore
