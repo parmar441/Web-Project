@@ -4,7 +4,7 @@ jobs:
   build:
     description: Build application with Release configuration
     machine: # executor type
-      image: 64bit Amazon Linux 2/2.2.9
+      image: Linux 2/2.2.9
     steps:
       - checkout
       - run: npm install
