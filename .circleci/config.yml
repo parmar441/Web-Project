@@ -7,10 +7,10 @@ jobs:
   build:
     executor:
       name: win/default
-    working_directory: C:\Users\circleci\project\ViocareWebApp
+    working_directory: C:\Users\circleci\project\ViocareWebApp\ViocareWebApp
     steps:
       - checkout:
-          path: C:\Users\circleci\project
+          path: C:\Users\circleci\project\ViocareWebApp
       - restore_cache:
           keys:
             - dotnet-packages-v1-{{ checksum "ViocareWebApp.csproj" }}
