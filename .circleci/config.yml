@@ -3,7 +3,7 @@ version: 2.1
 dependencies:
     pre:
       - pip install awsebcli
-deployment:
+jobs:
   develop:
     branch: circleci-project-setup
     commands:
@@ -12,5 +12,5 @@ deployment:
 workflows:
   build:
     jobs:
-      - deployment
+      - develop
           
