@@ -11,6 +11,5 @@ jobs:
       - eb deploy --viocare-VioscreenAPI default
 workflows:
   build:
-    jobs:
-      - develop
+    - jobs
           
