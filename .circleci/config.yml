@@ -1,20 +1,11 @@
 version: 2.1
 
-jobs:
-  build:
-    description: Build application with Release configuration
-    steps:
-      - checkout
-      - run: sudo pip install awsebcli --upgrade
-      - run: echo AKIAXNVGZ2DF5UGNQBVT
-      - run:
-          name: "Deploying"
-          command: eb deploy ViocareWebApp-test
-workflows:
-  build:
-    jobs:
-      - build:
-          filters:
-            branches:
-              only:
-                - circleci-project-setup
+dependencies:
+    pre:
+      - pip install awsebcli
+deployment:
+  develop:
+    branch: develop
+    commands:
+      - eb use ViocareWebApp-test --viocare-VioscreenAPI default
+      - eb deploy --viocare-VioscreenAPI default
